@@ -31,7 +31,7 @@ android {
 
     defaultConfig {
         applicationId = "com.hciastudy.hcia_quiz_app"
-        minSdk = 21
+        minSdkVersion = flutter.minSdkVersion
         targetSdk = 34
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
