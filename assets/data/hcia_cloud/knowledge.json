@@ -1,0 +1,767 @@
+{
+  "course": {
+    "title": "Huawei Cloud Service Certification Training HCIA-Cloud Service Lab Guide",
+    "version": "3.5",
+    "total_pages": 195
+  },
+  "chapters": [
+    {
+      "chapter_id": 1,
+      "title": "Getting Started with HUAWEI CLOUD",
+      "start_page": 8,
+      "end_page": 21,
+      "difficulty": 1,
+      "estimated_questions": 15,
+      "sections": [
+        {
+          "section_id": 1,
+          "title": "Introduction & Configuration Roadmap",
+          "start_page": 8,
+          "end_page": 8,
+          "learning_objectives": [
+            "Understand HUAWEI CLOUD accounts, subaccounts, and related configurations",
+            "Learn how to register a HUAWEI CLOUD account",
+            "Learn how to purchase and release HUAWEI CLOUD resources"
+          ],
+          "key_concepts": [
+            "HUAWEI CLOUD account registration",
+            "Real-name authentication lifecycle",
+            "IAM user configuration roadmap",
+            "VPC deployment and release roadmap"
+          ],
+          "definitions": [],
+          "services": [
+            "Identity and Access Management (IAM)",
+            "Virtual Private Cloud (VPC)"
+          ],
+          "protocols": [],
+          "commands": [],
+          "numbers": [],
+          "comparisons": [],
+          "advantages": [],
+          "disadvantages": [],
+          "prerequisites": [],
+          "limitations": [],
+          "best_practices": [],
+          "exam_traps": [],
+          "common_confusions": [],
+          "real_world_scenarios": [
+            "Initial setup of a cloud ecosystem for an enterprise or individual developer using the official roadmap"
+          ],
+          "dependencies": []
+        },
+        {
+          "section_id": 2,
+          "title": "Account Registration and Real-Name Authentication",
+          "start_page": 9,
+          "end_page": 12,
+          "learning_objectives": [
+            "Register a valid HUAWEI ID",
+            "Navigate the user console to access account settings",
+            "Complete individual real-name authentication processes"
+          ],
+          "key_concepts": [
+            "HUAWEI ID creation parameters",
+            "Real-name authentication enforcement policy for purchasing resources"
+          ],
+          "definitions": [
+            {
+              "term": "HUAWEI ID",
+              "definition": "The master account credentials used to manage resources and financial billing on the HUAWEI CLOUD platform."
+            }
+          ],
+          "services": [],
+          "protocols": [],
+          "commands": [],
+          "numbers": [],
+          "comparisons": [
+            {
+              "feature": "Authentication Type Options",
+              "individual_authentication": "Designed for private persons; requires personal certificates/identification metadata.",
+              "enterprise_authentication": "Designed for legal corporate entities; requires corporate registration documentation."
+            }
+          ],
+          "advantages": [],
+          "disadvantages": [],
+          "prerequisites": [],
+          "limitations": [
+            "Resource purchasing is restricted until real-name authentication is completed successfully."
+          ],
+          "best_practices": [],
+          "exam_traps": [
+            "Believing resources can be provisioned immediately after registration without doing real-name verification first."
+          ],
+          "common_confusions": [
+            "Confusing the general HUAWEI ID master account with an IAM sub-user login option."
+          ],
+          "real_world_scenarios": [
+            "An engineer initializing a fresh corporate cloud tenancy under regulatory compliance mandates."
+          ],
+          "dependencies": [
+            "1.1"
+          ]
+        },
+        {
+          "section_id": 3,
+          "title": "Creating an IAM User and Assigning Permissions",
+          "start_page": 12,
+          "end_page": 19,
+          "learning_objectives": [
+            "Create a User Group and assign specific system-defined roles",
+            "Create an IAM user with management console access type",
+            "Log in via the subaccount interface and verify permissions scope"
+          ],
+          "key_concepts": [
+            "Resource sharing without password exposure",
+            "Independent subaccount identity credentials",
+            "Centralized financial billing under the master account",
+            "Permission scoping via Region-specific projects"
+          ],
+          "definitions": [
+            {
+              "term": "IAM User",
+              "definition": "A user created by a HUAWEI CLOUD account within Identity and Access Management who uses cloud services and possesses independent identity credentials."
+            },
+            {
+              "term": "User Group",
+              "definition": "A collection of IAM users utilized as the administrative unit to simplify resource authorization and access controls."
+            }
+          ],
+          "services": [
+            "Identity and Access Management (IAM)"
+          ],
+          "protocols": [],
+          "commands": [],
+          "numbers": [
+            {
+              "value": "15 to 30",
+              "unit": "minutes",
+              "context": "Duration required for newly selected permissions to fully take effect across the user group."
+            }
+          ],
+          "comparisons": [
+            {
+              "feature": "Billing & Financial Responsibility",
+              "master_account": "Charged and pays independently for all usage incurred across all sub-identities.",
+              "iam_user": "Not charged or paid independently; financial liability rolls up entirely to the master account."
+            }
+          ],
+          "advantages": [
+            "Enables isolated credentials and minimum-privilege security scoping without multiple billing streams."
+          ],
+          "disadvantages": [],
+          "prerequisites": [
+            "Master account must be logged in and fully authenticated."
+          ],
+          "limitations": [],
+          "best_practices": [
+            "Assign permissions to a user group rather than directly to an isolated individual user.",
+            "Select region-specific scopes rather than all resources when minimum authorization requirements dictate constraint."
+          ],
+          "exam_traps": [
+            "Assuming IAM users have separate credit lines or invoices distinct from the root account.",
+            "Expecting authorization policies to take effect instantaneously when they require 15 to 30 minutes."
+          ],
+          "common_confusions": [
+            "Confusing Tenant Administrator (which excludes direct IAM management) with full account root administrative privileges."
+          ],
+          "real_world_scenarios": [
+            "Creating a specific operations account for an external contractor limited purely to the AP-Singapore region."
+          ],
+          "dependencies": [
+            "1.2"
+          ]
+        },
+        {
+          "section_id": 4,
+          "title": "Creating and Configuring a VPC",
+          "start_page": 19,
+          "end_page": 21,
+          "learning_objectives": [
+            "Provision a custom Virtual Private Cloud and associated subnet",
+            "Verify IAM user deployment rights within designated project scopes",
+            "Execute proper teardown procedures for networking resources"
+          ],
+          "key_concepts": [
+            "VPC CIDR Block designation",
+            "Subnet grouping dependencies during teardown operations"
+          ],
+          "definitions": [],
+          "services": [
+            "Virtual Private Cloud (VPC)"
+          ],
+          "protocols": [],
+          "commands": [],
+          "numbers": [],
+          "comparisons": [],
+          "advantages": [],
+          "disadvantages": [],
+          "prerequisites": [
+            "IAM user must be member of a group with sufficient network configuration policies in the region."
+          ],
+          "limitations": [
+            "A VPC cannot be deleted directly if it contains active subnets."
+          ],
+          "best_practices": [
+            "Delete the subnet information prior to initiating a VPC deletion request."
+          ],
+          "exam_traps": [
+            "Attempting to delete a target VPC while the active subnet count remains greater than zero."
+          ],
+          "common_confusions": [],
+          "real_world_scenarios": [
+            "Setting up the baseline localized isolation network framework in AP-Singapore for subsequent computing tier deployment."
+          ],
+          "dependencies": [
+            "1.3"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": 2,
+      "title": "Compute Services",
+      "start_page": 22,
+      "end_page": 53,
+      "difficulty": 3,
+      "estimated_questions": 40,
+      "sections": [
+        {
+          "section_id": 1,
+          "title": "Introduction & Topology",
+          "start_page": 22,
+          "end_page": 23,
+          "learning_objectives": [
+            "Identify capabilities of Elastic Cloud Server (ECS), Image Management Service (IMS), and Auto Scaling (AS)",
+            "Interpret the interactions between networking resources, private image definitions, and automated scaling parameters"
+          ],
+          "key_concepts": [
+            "Scalable computing instance provisioning",
+            "System disk template lifecycle management",
+            "Load-responsive automated infrastructure expansion"
+          ],
+          "definitions": [
+            {
+              "term": "Elastic Cloud Server (ECS)",
+              "definition": "Provides scalable, on-demand computing cloud servers for secure, flexible, and efficient applications."
+            },
+            {
+              "term": "Image Management Service (IMS)",
+              "definition": "Enables full-lifecycle management for images, templates used to create servers or disks, helping quickly deploy services."
+            },
+            {
+              "term": "Auto Scaling (AS)",
+              "definition": "Automatically adjusts ECS instances based on service requirements and configured AS policies to adapt to fluctuating loads."
+            }
+          ],
+          "services": [
+            "Elastic Cloud Server (ECS)",
+            "Image Management Service (IMS)",
+            "Auto Scaling (AS)"
+          ],
+          "protocols": [],
+          "commands": [],
+          "numbers": [],
+          "comparisons": [],
+          "advantages": [
+            "AS prevents unnecessary cloud charges while maintaining structural stability under heavy system load variations."
+          ],
+          "disadvantages": [],
+          "prerequisites": [],
+          "limitations": [],
+          "best_practices": [],
+          "exam_traps": [],
+          "common_confusions": [],
+          "real_world_scenarios": [],
+          "dependencies": []
+        },
+        {
+          "section_id": 2,
+          "title": "ECS Lifecycle Management",
+          "start_page": 23,
+          "end_page": 33,
+          "learning_objectives": [
+            "Provision pay-per-use Linux ECS instances inside custom subnets",
+            "Access Linux ECS servers via management console console options without public IPs",
+            "Modify computing specification flavors safely on stop-state resources"
+          ],
+          "key_concepts": [
+            "Billing modes configuration",
+            "General computing specification mapping",
+            "Console CLI access paths",
+            "Forcible resource termination steps",
+            "ECS flavor modification logic"
+          ],
+          "definitions": [],
+          "services": [
+            "Elastic Cloud Server (ECS)",
+            "Virtual Private Cloud (VPC)",
+            "Host Security Service (HSS)"
+          ],
+          "protocols": [
+            "SSH (Port 22)",
+            "DHCP"
+          ],
+          "commands": [
+            {
+              "command": "cat /proc/meminfo | grep MemTotal",
+              "purpose": "Verifies the current configured memory space visible inside the operating system."
+            }
+          ],
+          "numbers": [
+            {
+              "value": "40",
+              "unit": "GB",
+              "context": "Standard system disk storage boundary specified during the public image template selection."
+            }
+          ],
+          "comparisons": [],
+          "advantages": [
+            "Specification changes allow instant processing power updates without data loss on system and data storage drives."
+          ],
+          "disadvantages": [
+            "Modifying hardware resource allocation configurations causes momentary operational downtime during the adjustment cycle."
+          ],
+          "prerequisites": [
+            "An active, configured Virtual Private Cloud infrastructure topology."
+          ],
+          "limitations": [
+            "Direct network tools like PuTTY or CloudShell-based logging modes fail if the target machine lacks an assigned EIP or if relevant ports are blocked by the security group rules."
+          ],
+          "best_practices": [
+            "Ensure the instance status reads 'Stopped' fully before initiating flavor re-sizing adjustments.",
+            "Utilize console direct login methods when checking unassigned EIP instances."
+          ],
+          "exam_traps": [
+            "Attempting to adjust CPU or memory flavor specifications while the targeted cloud server remains active in the 'Running' state."
+          ],
+          "common_confusions": [
+            "Confusing 'Stopped' state with full deletion or decommissioning of standard storage components."
+          ],
+          "real_world_scenarios": [
+            "Scaling an application node's memory allocation capacity from 4GB up to 8GB after experiencing high utilization patterns."
+          ],
+          "dependencies": [
+            "2.1"
+          ]
+        },
+        {
+          "section_id": 3,
+          "title": "Creating a Linux System Disk Image from an ECS",
+          "start_page": 33,
+          "end_page": 43,
+          "learning_objectives": [
+            "Configure critical platform guest utilities like Cloud-Init and Cloud ResetPwdAgent",
+            "Generate localized private images using configured cloud nodes",
+            "Execute in-region image replication and manage multi-tenant share operations"
+          ],
+          "key_concepts": [
+            "System templates optimization mechanisms",
+            "Password recovery agent deployment verification",
+            "NIC name drift prevention steps",
+            "Project ID-based sharing parameters"
+          ],
+          "definitions": [
+            {
+              "term": "System disk image",
+              "definition": "A private image format targeting the primary bootable volume containing the fundamental operating ecosystem layout and pre-configured dependencies."
+            }
+          ],
+          "services": [
+            "Image Management Service (IMS)",
+            "Elastic Cloud Server (ECS)"
+          ],
+          "protocols": [
+            "DHCP"
+          ],
+          "commands": [
+            {
+              "command": "ls -lh /Cloud*",
+              "purpose": "Checks for the active presence of the required local cloud reset password agent binaries."
+            },
+            {
+              "command": "rpm -qa | grep cloud-init",
+              "purpose": "Queries system packages to check if the foundational customization management system utility is installed."
+            },
+            {
+              "command": "which cloud-init",
+              "purpose": "Locates the exact filesystem execution entry path for the cloud initialization script tool."
+            },
+            {
+              "command": "systemctl enable cloud-init-local.service cloud-init.service cloud-config.service cloud-final.service",
+              "purpose": "Ensures cloud customization modules execute correctly automatically during subsequent node generation start sequences."
+            },
+            {
+              "command": "ls -l /etc/udev/rules.d",
+              "purpose": "Inspects persistent hardware designation databases to protect against card enumeration mismatch issues."
+            }
+          ],
+          "numbers": [
+            {
+              "value": "10 to 20",
+              "unit": "minutes",
+              "context": "Average operational completion time window observed during new image generation sequences."
+            },
+            {
+              "value": "256",
+              "unit": "tenants",
+              "context": "Maximum concurrent recipient constraint cap imposed during single resource share operations."
+            }
+          ],
+          "comparisons": [],
+          "advantages": [
+            "Private imagery dramatically decreases software setup overhead across massive corporate system rollouts."
+          ],
+          "disadvantages": [],
+          "prerequisites": [
+            "Target systems must reside in either standard Running or Stopped lifecycle conditions.",
+            "Internet breakout availability (via EIP) if performing forced cloud-init environment downloads manually."
+          ],
+          "limitations": [
+            "Cross-region image sharing demands a regional copy function execution prior to targeting separate destinations.",
+            "Missing password reset agents isolate new target compute instances from accepting administrative updates."
+          ],
+          "best_practices": [
+            "Verify network rule configurations are fully cleared out to stop potential interfaces designation adjustments.",
+            "Match target boot environments strictly (BIOS vs UEFI) between source nodes and modified templates."
+          ],
+          "exam_traps": [
+            "Attempting an across-region direct template share using an unmatched region Project ID sequence.",
+            "Omitting network rule directory cleanup operations, leading to downstream network card attachment errors."
+          ],
+          "common_confusions": [
+            "Conflating system disk images with full cloud node backups or multi-drive cluster groupings."
+          ],
+          "real_world_scenarios": [
+            "Packaging a specialized corporate web environment template for distribution to secondary development teams located globally."
+          ],
+          "dependencies": [
+            "2.2"
+          ]
+        },
+        {
+          "section_id": 4,
+          "title": "Auto Scaling Operations",
+          "start_page": 43,
+          "end_page": 53,
+          "learning_objectives": [
+            "Construct complex AS configurations matching active reference templates",
+            "Establish multi-AZ expansion structures containing scheduled and periodic policies",
+            "Configure dynamic BGP public network address bandwidth-responsive policies"
+          ],
+          "key_concepts": [
+            "Automated group behavior enforcement",
+            "Cool-down threshold durations",
+            "Expansion policy strategies",
+            "Bandwidth tuning schedules",
+            "Health tracking criteria parameters"
+          ],
+          "definitions": [
+            {
+              "term": "AS Configuration",
+              "definition": "The structural blueprint defining instance specifications, image references, volumes, and credential types used during automated deployment actions."
+            },
+            {
+              "term": "AS Group",
+              "definition": "An administrative cluster bounded by resource constraint rules containing instances subjected to matching automated operational policies."
+            }
+          ],
+          "services": [
+            "Auto Scaling (AS)",
+            "Elastic Cloud Server (ECS)",
+            "Virtual Private Cloud (VPC)"
+          ],
+          "protocols": [
+            "BGP"
+          ],
+          "commands": [],
+          "numbers": [
+            {
+              "value": "900",
+              "unit": "seconds",
+              "context": "Standard cooldown timeframe parameter used between periodic scheduling operations."
+            },
+            {
+              "value": "300",
+              "unit": "seconds",
+              "context": "Standard delay duration configured for dynamic public network bandwidth adjustments."
+            },
+            {
+              "value": "600",
+              "unit": "seconds",
+              "context": "Default configuration rule window representing the scaling health check grace period."
+            }
+          ],
+          "comparisons": [
+            {
+              "feature": "Multi-AZ Expansion Selection Policy",
+              "load_balanced": "Distributes deployed server instances equally across all configured availability zones.",
+              "sequenced": "Deploys instances down through a predetermined availability zone ordering list until reaching maximum boundaries."
+            }
+          ],
+          "advantages": [
+            "Maintains high operational uptime while optimizing system expenditures by dynamically mapping node count to load rules."
+          ],
+          "disadvantages": [],
+          "prerequisites": [
+            "An operational configuration baseline instance or reference system image template definition."
+          ],
+          "limitations": [
+            "Bandwidth scaling mechanisms function exclusively on flexible pay-per-use public interface configurations."
+          ],
+          "best_practices": [
+            "Disable standard AS actions before proceeding with intentional manual downstream environment deletions.",
+            "Incorporate multi-AZ configuration paths to insulate application deployments from independent data center events."
+          ],
+          "exam_traps": [
+            "Forgetting to switch off or suspend an active AS Group before attempting infrastructure decommissioning, which triggers automated scaling actions.",
+            "Expecting a locked yearly-monthly public connection contract path to dynamically respond to dynamic bandwidth scaling rules."
+          ],
+          "common_confusions": [
+            "Confusing the roles of an AS Configuration (the template blueprint) with an AS Group (the policy control boundaries)."
+          ],
+          "real_world_scenarios": [
+            "Automatically expanding application server pools at 18:00 every evening to absorb predictable high traffic shifts.",
+            "Dynamically boosting public pipeline allocation capacity up to 10 Mbit/s during scheduled marketing flash sales."
+          ],
+          "dependencies": [
+            "2.3"
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": 3,
+      "title": "Networking Services",
+      "start_page": 54,
+      "end_page": 87,
+      "difficulty": 4,
+      "estimated_questions": 50,
+      "sections": [
+        {
+          "section_id": 1,
+          "title": "Introduction & Topologies",
+          "start_page": 54,
+          "end_page": 56,
+          "learning_objectives": [
+            "Differentiate isolated network capabilities spanning internal and cross-regional topologies",
+            "Identify the operational roles of internal group controls, public breakout endpoints, and path routing elements"
+          ],
+          "key_concepts": [
+            "Isolated cloud space environments",
+            "Access rule enforcement matrices",
+            "Public path mapping endpoints",
+            "High availability tracking elements",
+            "Regional boundaries constraints"
+          ],
+          "definitions": [
+            {
+              "term": "Virtual Private Cloud (VPC)",
+              "definition": "A logically isolated, configurable, and manageable virtual network for cloud servers, containers, and databases."
+            },
+            {
+              "term": "Security Group",
+              "definition": "An access control system acting at the instance level that utilizes specific rules to filter inbound and outbound communication paths."
+            },
+            {
+              "term": "Elastic IP (EIP)",
+              "definition": "Static public network entry structures enabling internal platform components to negotiate communication paths with Internet endpoints."
+            },
+            {
+              "term": "Elastic Load Balance (ELB)",
+              "definition": "An active system that distributes traffic across multiple backend targets based on user-defined listener rules to remove Single Points of Failure."
+            },
+            {
+              "term": "VPC Peering Connection",
+              "definition": "A direct regional routing layout enabling independent virtual private environments within a single geographic region to exchange traffic securely."
+            },
+            {
+              "term": "Virtual Private Network (VPN)",
+              "definition": "An encrypted, Internet-based communications tunnel connecting disparate distant network landscapes to local cloud instances."
+            }
+          ],
+          "services": [
+            "Virtual Private Cloud (VPC)",
+            "Elastic IP (EIP)",
+            "Elastic Load Balance (ELB)",
+            "Virtual Private Network (VPN)"
+          ],
+          "protocols": [],
+          "commands": [],
+          "numbers": [],
+          "comparisons": [],
+          "advantages": [],
+          "disadvantages": [],
+          "prerequisites": [],
+          "limitations": [
+            "VPC Peering pathways cannot cross separate geographical region definitions."
+          ],
+          "best_practices": [],
+          "exam_traps": [],
+          "common_confusions": [],
+          "real_world_scenarios": [],
+          "dependencies": []
+        },
+        {
+          "section_id": 2,
+          "title": "VPC & ECS Core Infrastructure Provisioning",
+          "start_page": 56,
+          "end_page": 62,
+          "learning_objectives": [
+            "Deploy distinct cloud spaces with non-overlapping network parameters across multiple global regions",
+            "Provision targeted server instances distributed down through independent local network subnets"
+          ],
+          "key_concepts": [
+            "CIDR Block path selection",
+            "Multi-subnet architecture isolation",
+            "Cross-region data path planning"
+          ],
+          "definitions": [],
+          "services": [
+            "Virtual Private Cloud (VPC)",
+            "Elastic Cloud Server (ECS)"
+          ],
+          "protocols": [],
+          "commands": [],
+          "numbers": [],
+          "comparisons": [],
+          "advantages": [],
+          "disadvantages": [],
+          "prerequisites": [],
+          "limitations": [
+            "IP address space mappings must remain completely non-conflicting when preparing environments for future cross-network setups."
+          ],
+          "best_practices": [
+            "Isolate public frontend components from backend data endpoints by placing them in separate network subnets within the environment."
+          ],
+          "exam_traps": [
+            "Configuring identical CIDR blocks on independent cloud networks intended for immediate interconnected communication layouts."
+          ],
+          "common_confusions": [],
+          "real_world_scenarios": [
+            "Setting up clean infrastructure segments in AP-Singapore and AF-Johannesburg to test upcoming cross-regional application communication configurations."
+          ],
+          "dependencies": [
+            "3.1"
+          ]
+        },
+        {
+          "section_id": 3,
+          "title": "Verifying Network Functions & Connectivity Controls",
+          "start_page": 63,
+          "end_page": 87,
+          "learning_objectives": [
+            "Verify internal private communication behaviors inside single cloud networks and isolate cross-VPC boundaries",
+            "Manipulate inbound access rule sets to demonstrate active traffic filtering controls",
+            "Implement public endpoint breakouts and deploy distributed high-availability application pools via load balancers"
+          ],
+          "key_concepts": [
+            "Private interface reachability defaults",
+            "Security filter rule modification",
+            "Internet access binding mechanics",
+            "Application stream distribution rules",
+            "Backend pool port designations"
+          ],
+          "definitions": [],
+          "services": [
+            "Elastic Cloud Server (ECS)",
+            "Elastic IP (EIP)",
+            "Elastic Load Balance (ELB)"
+          ],
+          "protocols": [
+            "ICMP",
+            "TCP",
+            "HTTP"
+          ],
+          "commands": [
+            {
+              "command": "ping <private_ip>",
+              "purpose": "Tests low-level ICMP pathway capabilities between distinct computing endpoints."
+            },
+            {
+              "command": "nohup python -m SimpleHTTPServer 8889 > /dev/null 2>&1 &",
+              "purpose": "Launches a background HTTP listener service bound to port 8889 for traffic validation testing."
+            },
+            {
+              "command": "curl 127.0.0.1:8889",
+              "purpose": "Tests the responsiveness of the local HTTP processing environment loopback interface."
+            },
+            {
+              "command": "touch SERVER1",
+              "purpose": "Creates a uniquely identifiable trace indicator file on the host storage structure to verify load distribution paths."
+            }
+          ],
+          "numbers": [
+            {
+              "value": "8889",
+              "unit": "port",
+              "context": "The internal destination target port hosting backend computing node configurations inside this scenario."
+            },
+            {
+              "value": "8881",
+              "unit": "port",
+              "context": "The external consumer-facing entry point port specified on the frontend configuration of the load balancer listener."
+            },
+            {
+              "value": "1",
+              "unit": "Mbit/s",
+              "context": "The standard network interface delivery allocation parameter applied during public EIP environment allocation tests."
+            }
+          ],
+          "comparisons": [
+            {
+              "feature": "Inter-Compute Node Default Path Routing",
+              "same_vpc_different_subnets": "Communication pathways are active and open out-of-the-box, assuming no blocking rules are present in the default security group settings.",
+              "different_vpc_same_region": "Communication is strictly blocked and unreachable unless an explicit interconnect component is provisioned."
+            }
+          ],
+          "advantages": [
+            "Shared load balancing options efficiently balance user traffic flows while shielding underlying server systems from direct exposure to the open internet."
+          ],
+          "disadvantages": [],
+          "prerequisites": [
+            "Compute nodes must be online, reachable, and running matching local validation script tools."
+          ],
+          "limitations": [
+            "Total removal of all entry rules within a local security group completely blocks all incoming traffic paths, including standard ping commands from adjacent systems."
+          ],
+          "best_practices": [
+            "Utilize precise cryptographic access systems (key pairs) when deploying publicly reachable server infrastructure platforms.",
+            "Verify backend target ports are properly exposed inside active firewall rule boundaries to ensure successful health check operations."
+          ],
+          "exam_traps": [
+            "Expecting load balancers to correctly forward application traffic when the underlying security groups block all incoming communication paths from the balancer's source IP address range.",
+            "Assuming adjacent cloud networks can cross-communicate automatically without provisioning routing components or peering connections."
+          ],
+          "common_confusions": [
+            "Confusing listener routing designations (frontend entry interfaces) with the actual back-end hosting application processing port configuration rules."
+          ],
+          "real_world_scenarios": [
+            "Setting up a load-balanced public web application cluster in AP-Singapore that distributes HTTP requests across multiple independent internal server subnets."
+          ],
+          "dependencies": [
+            "3.2"
+          ]
+        }
+      ]
+    }
+  ],
+  "learning_manifest": {
+    "recommended_learning_order": [
+      "Getting Started with HUAWEI CLOUD (Chapter 1)",
+      "Compute Services Core Configuration (Chapter 2)",
+      "Networking Services Architecture (Chapter 3)"
+    ],
+    "estimated_difficulty": 3,
+    "estimated_questions_to_generate": 105,
+    "prerequisites": [
+      "Basic understanding of server operating systems (Linux)",
+      "Fundamental knowledge of core networking architectures and storage models"
+    ],
+    "dependencies": [
+      "Chapter 2 operations require the foundational IAM and VPC structures defined in Chapter 1.",
+      "Chapter 3 verification scenarios build directly upon the compute instances and systems created in Chapter 2."
+    ],
+    "estimated_study_time": "12 hours"
+  }
+}

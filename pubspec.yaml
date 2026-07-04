@@ -1,0 +1,41 @@
+name: hcia_quiz_app
+description: Offline HCIA/HCIP certification learning & quiz app.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  provider: ^6.1.2
+  shared_preferences: ^2.2.3
+  path: ^1.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # IMPORTANT (scalability):
+  # We declare the whole `assets/data/` directory rather than individual files.
+  # Each course lives in its own subfolder, e.g.:
+  #   assets/data/hcia_cloud/knowledge.json
+  #   assets/data/hcia_cloud/quiz_bank.json
+  #   assets/data/hcip_datacom/knowledge.json
+  #   assets/data/hcip_datacom/quiz_bank.json
+  #
+  # To add a new course you ONLY need to:
+  #   1. Create a new subfolder under assets/data/<course_id>/
+  #   2. Drop knowledge.json + quiz_bank.json (same schema) inside it
+  #   3. Re-run `flutter pub get` (no Dart code changes required)
+  #
+  # The app discovers courses at runtime via AssetManifest.json.
+  assets:
+    - assets/data/
+    - assets/data/hcia_cloud/
