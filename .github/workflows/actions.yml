@@ -16,7 +16,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install unzip -y
 
       - name: Unzip project
-        run: unzip project.zip -d app
+        run: unzip hcia_quiz_app.zip -d app
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
