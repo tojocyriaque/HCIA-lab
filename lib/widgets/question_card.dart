@@ -77,16 +77,16 @@ class QuestionCard extends StatelessWidget {
 
                 if (submitted) {
                   if (isCorrectOption) {
-                    tileColor = scheme.primaryContainer.withOpacity(0.5);
+                    tileColor = scheme.primaryContainer.withValues(alpha: 0.5);
                     trailingIcon = Icons.check_circle;
                     trailingColor = scheme.primary;
                   } else if (isSelected && !isCorrectOption) {
-                    tileColor = scheme.errorContainer.withOpacity(0.5);
+                    tileColor = scheme.errorContainer.withValues(alpha: 0.5);
                     trailingIcon = Icons.cancel;
                     trailingColor = scheme.error;
                   }
                 } else if (isSelected) {
-                  tileColor = scheme.secondaryContainer.withOpacity(0.6);
+                  tileColor = scheme.secondaryContainer.withValues(alpha: 0.6);
                 }
 
                 return AnimatedContainer(

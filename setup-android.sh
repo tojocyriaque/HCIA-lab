@@ -1,6 +1,14 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
+
+export ANDROID_SDK_ROOT="${ANDROID_SDK_ROOT:-$HOME/android-sdk}"
+export ANDROID_HOME="${ANDROID_HOME:-$ANDROID_SDK_ROOT}"
+export JAVA_HOME="${JAVA_HOME:-/usr/lib/jvm/java-17-openjdk-amd64}"
+export PATH="$JAVA_HOME/bin:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"
 
 echo "=============================="
 echo "☕ Installing Java"
@@ -11,13 +19,13 @@ sudo apt install -y openjdk-17-jdk unzip curl
 echo "=============================="
 echo "📦 Creating Android SDK folder"
 echo "=============================="
-mkdir -p $HOME/android-sdk/cmdline-tools
-cd $HOME/android-sdk
+mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools"
+cd "$ANDROID_SDK_ROOT"
 
 echo "=============================="
 echo "⬇️ Downloading Android cmdline tools"
 echo "=============================="
-curl -o sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+curl -L -o sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
 
 unzip sdk.zip
 rm sdk.zip
@@ -28,21 +36,22 @@ mv cmdline-tools/* cmdline-tools/latest/ 2>/dev/null || true
 echo "=============================="
 echo "🌍 Setting environment variables"
 echo "=============================="
-echo 'export ANDROID_HOME=$HOME/android-sdk' >> ~/.bashrc
-echo 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin' >> ~/.bashrc
-echo 'export PATH=$PATH:$ANDROID_HOME/platform-tools' >> ~/.bashrc
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc
+echo 'export ANDROID_HOME="$HOME/android-sdk"' >> ~/.bashrc
+echo 'export ANDROID_SDK_ROOT="$ANDROID_HOME"' >> ~/.bashrc
+echo 'export PATH="$JAVA_HOME/bin:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH"' >> ~/.bashrc
 
-export ANDROID_HOME=$HOME/android-sdk
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+source ~/.bashrc
 
 echo "=============================="
 echo "📦 Installing Android packages"
 echo "=============================="
-yes | sdkmanager --sdk_root=$ANDROID_HOME \
+yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_HOME" \
   "platform-tools" \
-    "platforms;android-34" \
-      "build-tools;34.0.0"
+  "platforms;android-36" \
+  "build-tools;36.0.0" \
+  "cmake;3.22.1" \
+  "ndk;28.2.13676358"
 
       echo "=============================="
       echo "✅ Accepting licenses"

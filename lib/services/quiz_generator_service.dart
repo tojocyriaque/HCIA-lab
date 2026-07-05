@@ -39,7 +39,7 @@ class QuizGeneratorService {
     int? chapterId,
     int limit = 50,
   }) {
-    var list = chapterId == null
+    final list = chapterId == null
         ? List<Question>.from(pool)
         : pool.where((q) => q.chapterId == chapterId).toList();
     list.shuffle(_random);
