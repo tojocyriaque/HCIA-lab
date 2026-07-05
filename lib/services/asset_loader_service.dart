@@ -1,13 +1,13 @@
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart' show rootBundle, AssetManifest;
 
 import '../models/course_model.dart';
 import '../models/question_model.dart';
 
 /// Loads knowledge bases and quiz banks straight from the `assets/data/`
 /// folder. No course names or file paths are hardcoded beyond the
-/// `assets/data/` prefix: courses are discovered dynamically via
-/// `AssetManifest.json`, which Flutter regenerates automatically whenever
+/// `assets/data/` prefix: courses are discovered dynamically via the
+/// Flutter asset manifest, which is regenerated automatically whenever
 /// the asset directory declared in pubspec.yaml changes contents.
 ///
 /// This is what makes it possible to add a new HCIA/HCIP course by simply
@@ -20,11 +20,11 @@ class AssetLoaderService {
   /// Returns the list of course subfolder ids found under assets/data/,
   /// e.g. ["hcia_cloud", "hcip_datacom"].
   Future<List<String>> discoverCourseIds() async {
-    final manifestContent = await rootBundle.loadString('AssetManifest.json');
-    final Map<String, dynamic> manifestMap = jsonDecode(manifestContent);
+    final assetManifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+    final assetPaths = assetManifest.listAssets();
 
     final courseIds = <String>{};
-    for (final assetPath in manifestMap.keys) {
+    for (final assetPath in assetPaths) {
       if (assetPath.startsWith(_dataRoot) &&
           assetPath.endsWith('knowledge.json')) {
         // assets/data/<courseId>/knowledge.json
